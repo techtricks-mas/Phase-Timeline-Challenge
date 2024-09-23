@@ -1,0 +1,28 @@
+<input type="number" id="numberInput" />
+
+<script>
+  const numberInput = document.getElementById('numberInput');
+  let isArrowClick = false;
+
+  // Detect mousedown on the input
+  numberInput.addEventListener('mousedown', (event) => {
+    // Check if the target is the up/down arrows
+    if (event.target === numberInput) {
+      isArrowClick = true;
+    }
+  });
+
+  // Reset the flag on mouseup
+  numberInput.addEventListener('mouseup', () => {
+    isArrowClick = false;
+  });
+
+  // Listen for input changes
+  numberInput.addEventListener('input', (event) => {
+    if (isArrowClick) {
+      console.log('Stepper arrow clicked:', event.target.value);
+    } else {
+      console.log('Input typed:', event.target.value);
+    }
+  });
+</script>

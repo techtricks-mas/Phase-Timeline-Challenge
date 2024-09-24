@@ -110,6 +110,9 @@ export const PlayControls = ({ time, setTime, maxTime, setMaxTime, rulerRef, set
             const roundedValue = Math.round(validValue / 10) * 10;
             setTempMaxTime({ ...tempMaxTime, prev: roundedValue, default: roundedValue });
             setMaxTime(roundedValue);
+            if (e.currentTarget) {
+               e.currentTarget.value = roundedValue.toString();
+            }
             if (time > roundedValue) {
                setTempTime({ ...tempTime, prev: roundedValue, default: roundedValue });
                updateTime(roundedValue);
@@ -162,6 +165,9 @@ export const PlayControls = ({ time, setTime, maxTime, setMaxTime, rulerRef, set
          const roundedValue = Math.round(validValue / 10) * 10;
          setTempMaxTime({ ...tempMaxTime, prev: roundedValue, default: roundedValue });
          setMaxTime(roundedValue);
+         if (e.currentTarget) {
+            e.currentTarget.value = roundedValue.toString();
+         }
          if (tempTime.default > roundedValue) {
             setTempTime({ ...tempTime, prev: roundedValue, default: roundedValue });
             updateTime(roundedValue);
@@ -186,7 +192,7 @@ export const PlayControls = ({ time, setTime, maxTime, setMaxTime, rulerRef, set
          <fieldset className="flex gap-1">
             Current
             <input
-               className="bg-gray-700 px-1 rounded"
+               className="bg-gray-700 px-1 rounded max-w-[70px]"
                type="number"
                data-testid="current-time-input"
                min={0}
@@ -206,7 +212,7 @@ export const PlayControls = ({ time, setTime, maxTime, setMaxTime, rulerRef, set
          -
          <fieldset className="flex gap-1">
             <input
-               className="bg-gray-700 px-1 rounded"
+               className="bg-gray-700 px-1 rounded max-w-[70px]"
                type="number"
                data-testid="duration-input"
                min={100}
